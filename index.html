@@ -11,13 +11,15 @@
       --text: #1a202c;
       --accent: #3182ce;
       --card-bg: #f9f9f9;
+      --gradient: linear-gradient(135deg, #63b3ed, #805ad5);
     }
 
     [data-theme="dark"] {
-      --bg: #1a1a1a;
-      --text: #f0f0f0;
+      --bg: #121212;
+      --text: #eaeaea;
       --accent: #63b3ed;
-      --card-bg: #2a2a2a;
+      --card-bg: #1f1f1f;
+      --gradient: linear-gradient(135deg, #63b3ed, #d53f8c);
     }
 
     body {
@@ -31,28 +33,39 @@
     a {
       color: var(--accent);
       text-decoration: none;
-      transition: color 0.3s;
     }
 
     a:hover {
-      color: #90cdf4;
+      text-decoration: underline;
     }
 
     .container {
-      max-width: 1000px;
+      display: flex;
+      flex-direction: row;
+      max-width: 1200px;
       margin: auto;
       padding: 2rem;
+      gap: 2rem;
     }
 
-    header {
-      display: flex;
-      align-items: center;
+    .left-panel {
+      flex: 1;
       background: var(--card-bg);
-      padding: 2rem;
       border-radius: 12px;
-      margin-bottom: 2rem;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      padding: 2rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      position: sticky;
+      top: 2rem;
+      height: fit-content;
       animation: fadeIn 1s ease-in-out;
+    }
+
+    .right-panel {
+      flex: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
     }
 
     .profile-pic {
@@ -60,32 +73,29 @@
       height: 160px;
       border-radius: 50%;
       object-fit: cover;
-      margin-right: 2rem;
       border: 4px solid var(--accent);
+      margin-bottom: 1rem;
+      box-shadow: 0 0 15px rgba(0,0,0,0.4);
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
-
-    header p {
-      margin: 0.5rem 0 0;
-      font-size: 1.2rem;
+    h1 {
+      margin-bottom: 0.5rem;
+      font-size: 1.8rem;
     }
 
     section {
       background: var(--card-bg);
       border-radius: 10px;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
       padding: 1.5rem 2rem;
-      margin-bottom: 2rem;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
       animation: fadeInUp 0.8s ease forwards;
     }
 
-    h2 {
-      color: var(--text);
+    section h2 {
       margin-top: 0;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     ul {
@@ -93,7 +103,7 @@
     }
 
     li {
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.5rem;
     }
 
     footer {
@@ -115,7 +125,6 @@
       cursor: pointer;
       font-weight: 600;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-      transition: background 0.3s, color 0.3s;
     }
 
     .toggle-theme:hover {
@@ -133,85 +142,82 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    @media (max-width: 700px) {
-      header {
+    @media (max-width: 900px) {
+      .container {
         flex-direction: column;
-        text-align: center;
       }
 
-      .profile-pic {
-        margin-right: 0;
-        margin-bottom: 1rem;
+      .left-panel {
+        position: static;
       }
     }
   </style>
 </head>
 <body>
   <button class="toggle-theme" onclick="toggleTheme()">Toggle Theme</button>
+
   <div class="container">
-    <header>
+    <div class="left-panel">
       <img src="profile_photo.jpg" alt="Profile Picture" class="profile-pic">
-      <div>
-        <h1>Prottay Deb Nath</h1>
-        <p>Data Scientist | Machine Learning Engineer | Analytics</p>
-      </div>
-    </header>
+      <h1>Prottay Deb Nath</h1>
+      <p>Data Scientist<br>ML Engineer | Analytics</p>
+      <br>
+      <p>Email:<br>prottay09@gmail.com</p>
+      <p>GitHub:<br><a href="https://github.com/prottay09" target="_blank">github.com/prottay09</a></p>
+      <p>LinkedIn:<br><a href="https://www.linkedin.com/in/prottay-deb-nath-5ba3ab358/" target="_blank">linkedin.com/in/prottay-deb-nath</a></p>
+    </div>
 
-    <section>
-      <h2>About Me</h2>
-      <p>
-        Data Scientist with 5+ years of experience working in a data science consultancy, delivering impactful machine learning and
-        analytics solutions across aviation, manufacturing, logistics and healthcare industries. Skilled in Python, SQL, and Cloud
-        environments, with a strong focus on demand forecasting, dynamic pricing, predictive modelling, optimisation, and time
-        series analysis. Recognised for driving innovation and leading initiatives that align technical solutions with business objectives
-      </p>
-    </section>
-
-    <section>
-      <h2>Skills</h2>
-      <ul>
-        <li>Python (numpy, polars, pandas, scikit-learn, statsmodels, Plotly, PyTorch, Tensorflow, pymc, Langchain, FastAPI)</li>
-        <li>SQL & Databases (PostgreSQL, Azure Blob Storage, Delta Lake, S3)</li>
-        <li>Data Visualization (streamlit, dash, Power BI, plotly, matplotlib, seaborn)</li>
-        <li>Cloud & Big Data: MS Azure (Azure ML, Synapse), AWS (Sagemaker, EC2), Databricks, PySpark</li>
-        <li>Others: MLOps (mlflow, DVC, SHAP), Documentation (Mkdocs, Confluence), MS Office</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Projects</h2>
-      <ul>
-        <li><strong>Time Series Forecasting:</strong> Analysis of different time series forecasting method (ARIMA, exponential-smoothing, Holt-winters, fbprophet) on sales of pharmacy products</li>
-        <li><strong>Intermittent forecasting:</strong> Implementation of croston method and ADIDA method for intermittent forecasting</li>
-        <li><strong>Bayesian MMM:</strong> Optimising marketing budget of a client by media mix modelling with Geometric adstock and logistic saturation> </li>
-        <li><strong>Sentiment analyser:</strong> Sentiment analysis by LSTM classifier with pytorch-lightning</li>
-        <li><strong>Recommendation system:</strong> Simple recommender engine built with pre-trained Tensorflow model</li>
-        <li><strong>Chest X-ray diagnosis:</strong> Evaluation of chest x-ray diagnosis with Vision Transformer model</li>
-        <li><strong>Chatbot:</strong> RAG chatbot with local ollama server</li>
-        <li><strong>Interactive dashboard:</strong> Interactive dashboard using plotly and streamlit</li>
-      </ul>
-    </section>
-
-    <section>
-        <h2>Certifications</h2>
-        <ul>
-          <li><strong>Oracle Cloud Infrastructure 2024 Generative AI Certified Professional</strong> – Oracle (July 2024)</li>
-          <li><strong>Data Science on Azure</strong> – Fast Lane Institute for Knowledge Transfer GmbH (May 2023)</li>
-          <li><strong>IBM Data Science Professional Certificate</strong> – IBM (June 2020)</li>
-        </ul>
+    <div class="right-panel">
+      <section>
+        <h2>About Me</h2>
+        <p>
+            Data Scientist with 5+ years of experience working in a data science consultancy, delivering impactful machine learning and
+            analytics solutions across aviation, manufacturing, logistics and healthcare industries. Skilled in Python, SQL, and Cloud
+            environments, with a strong focus on demand forecasting, dynamic pricing, predictive modelling, optimisation, and time
+            series analysis. Recognised for driving innovation and leading initiatives that align technical solutions with business objectives
+    
+        </p>
       </section>
 
-    <section>
-      <h2>Contact</h2>
-      <p>Email: prottay09@gmail.com<br>
-      GitHub: <a href="https://github.com/prottay09" target="_blank">github.com/prottay09</a><br>
-      LinkedIn: <a href="https://www.linkedin.com/in/prottay-deb-nath-5ba3ab358/" target="_blank">linkedin.com/in/prottay-deb-nath-5ba3ab358</a></p>
-    </section>
+      <section>
+        <h2>Skills</h2>
+        <ul>
+            <li>Python (numpy, polars, pandas, scikit-learn, statsmodels, Plotly, PyTorch, Tensorflow, pymc, Langchain, FastAPI)</li>
+            <li>SQL & Databases (PostgreSQL, Azure Blob Storage, Delta Lake, S3)</li>
+            <li>Data Visualization (streamlit, dash, Power BI, plotly, matplotlib, seaborn)</li>
+            <li>Cloud & Big Data: MS Azure (Azure ML, Synapse), AWS (Sagemaker, EC2), Databricks, PySpark</li>
+            <li>Others: MLOps (mlflow, DVC, SHAP), Documentation (Mkdocs, Confluence), MS Office</li>
+            </ul>
+      </section>
 
-    <footer>
-      &copy; 2025 Prottay Deb Nath — Built with HTML, CSS & ☕
-    </footer>
+      <section>
+        <h2>Projects</h2>
+        <ul>
+            <li><strong>Time Series Forecasting:</strong> Analysis of different time series forecasting method (ARIMA, exponential-smoothing, Holt-winters, fbprophet) on sales of pharmacy products</li>
+            <li><strong>Intermittent forecasting:</strong> Implementation of croston method and ADIDA method for intermittent forecasting</li>
+            <li><strong>Bayesian MMM:</strong> Optimising marketing budget of a client by media mix modelling with Geometric adstock and logistic saturation </li>
+            <li><strong>Sentiment analyser:</strong> Sentiment analysis by LSTM classifier with pytorch-lightning</li>
+            <li><strong>Recommendation system:</strong> Simple recommender engine built with pre-trained Tensorflow model</li>
+            <li><strong>Chest X-ray diagnosis:</strong> Evaluation of chest x-ray diagnosis with Vision Transformer model</li>
+            <li><strong>Chatbot:</strong> RAG chatbot with local ollama server</li>
+            <li><strong>Interactive dashboard:</strong> Interactive dashboard using plotly and streamlit</li>
+            </ul>
+      </section>
+
+      <section>
+        <h2>Certifications</h2>
+        <ul>
+            <li><strong>Oracle Cloud Infrastructure 2024 Generative AI Certified Professional</strong> – Oracle (July 2024)</li>
+            <li><strong>Data Science on Azure</strong> – Fast Lane Institute for Knowledge Transfer GmbH (May 2023)</li>
+            <li><strong>IBM Data Science Professional Certificate</strong> – IBM (June 2020)</li>
+          </ul>
+      </section>
+    </div>
   </div>
+
+  <footer>
+    &copy; 2025 Prottay Deb Nath — Built with HTML, CSS & ☕
+  </footer>
 
   <script>
     function toggleTheme() {

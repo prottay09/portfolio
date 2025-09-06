@@ -131,6 +131,30 @@
       background: var(--accent);
       color: white;
     }
+    
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: 1.5rem;
+      text-align: center;
+    }
+
+    .tool img {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 0.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .tool span {
+      display: block;
+      font-size: 0.9rem;
+    }
+
+    .tool img:hover {
+      transform: scale(1.2);
+    }
+
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(-20px); }
@@ -187,8 +211,44 @@
             <li>Data Visualization (streamlit, dash, Power BI, plotly, matplotlib, seaborn, PowerBI)</li>
             <li>Cloud & Big Data: MS Azure (Azure ML, Synapse), AWS (Sagemaker, EC2), Databricks, PySpark</li>
             <li>Others: MLOps (mlflow, DVC, SHAP), Documentation (Mkdocs, Confluence), MS Office</li>
-            </ul>
+        </ul>
       </section>
+
+      <!-- Tools Section -->
+      <section>
+        <h2>Tools</h2>
+        <div class="tools-grid">
+          <div class="tool">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" />
+            <span>Python</span>
+          </div>
+          <div class="tool">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="SQL" />
+            <span>SQL</span>
+          </div>
+          <div class="tool">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" alt="Azure" />
+            <span>Azure</span>
+          </div>
+          <div class="tool">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/databricks/databricks-original.svg" alt="Databricks" />
+            <span>Databricks</span>
+          </div>
+          <div class="tool">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/openai.svg" alt="OpenAI" />
+            <span>OpenAI</span>
+          </div>
+          <div class="tool">
+            <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/langchain.svg" alt="LangChain" />
+            <span>LangChain</span>
+          </div>
+          <div class="tool">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" />
+            <span>Docker</span>
+          </div>
+        </div>
+      </section>
+
 
       <section>
         <h2>Projects</h2>
